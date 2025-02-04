@@ -1,0 +1,16 @@
+# Environnement virtuel
+venv/
+env/
+conge/
+
+# Fichiers de compilation Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Base de données SQLite (si utilisée)
+db.sqlite3
+
+# Migrations et configurations locales
+*.log
+*.env

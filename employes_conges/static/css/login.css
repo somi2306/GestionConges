@@ -1,0 +1,70 @@
+/* Styles spécifiques pour le login */
+.login-card {
+  margin-top: 50px;
+}
+
+.login-form .form-group {
+  margin-bottom: 20px;
+}
+
+.login-form .form-group label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.login-form .form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.login-form .form-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.forgot-password {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #50c878;
+  text-decoration: underline;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #7f8c8d;
+}
+
+.signup-link a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+  color: #50c878;
+  text-decoration: underline;
+}
+
+.card-header {
+  background: linear-gradient(45deg, #4a90e2, #50c878);
+  color: white;
+  text-align: center;
+  padding: 5px;
+  position: relative;
+}
+

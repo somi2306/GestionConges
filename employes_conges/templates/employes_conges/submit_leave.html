@@ -1,0 +1,26 @@
+{# templates/employee_leaves/submit_leave.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/submit_leave.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2>Nouvelle demande de congé</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Soumettre la demande</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

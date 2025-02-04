@@ -1,0 +1,11 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<h2>Supprimer un employé</h2>
+<p>Êtes-vous sûr de vouloir supprimer l'employé {{ employee.username }} ?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+    <a href="{% url 'manage_employees' %}" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}

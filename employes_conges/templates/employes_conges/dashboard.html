@@ -1,0 +1,37 @@
+{# templates/employee_leaves/dashboard.html #}
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Tableau de bord</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Mes demandes de congés</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Statut</th>
+                    <th>Date de demande</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in leave_requests %}
+                <tr>
+                    <td>{{ request.leave_type }}</td>
+                    <td>{{ request.start_date }}</td>
+                    <td>{{ request.end_date }}</td>
+                    <td>{{ request.get_status_display }}</td>
+                    <td>{{ request.created_at|date:"d/m/Y" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Aucune demande de congé</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

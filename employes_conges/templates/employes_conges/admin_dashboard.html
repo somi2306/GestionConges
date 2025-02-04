@@ -1,0 +1,84 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<h2>Bienvenue Admin</h2>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total des employés</h5>
+                <h2>{{ stats.total_employees }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">Demandes en attente</h5>
+                <h2>{{ stats.pending_requests }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Demandes approuvées</h5>
+                <h2>{{ stats.approved_requests }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-danger text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total des demandes</h5>
+                <h2>{{ stats.total_requests }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Demandes en attente</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employé</th>
+            <th>Type de congé</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in pending_requests %}
+        <tr>
+            <td>{{ request.employee.username }}</td>
+            <td>{{ request.leave_type }}</td>
+            <td>{{ request.start_date }}</td>
+            <td>{{ request.end_date }}</td>
+            <td>
+                <form method="post" action="{% url 'approve_leave' request.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Approuver</button>
+                </form>
+                <form method="post" action="{% url 'reject_leave' request.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Rejeter</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center">Aucune demande en attente</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Ajouter des boutons pour accéder aux pages de gestion des employés -->
+<div class="row mt-4">
+    <div class="col-md-12">
+        <a href="{% url 'manage_employees' %}" class="btn btn-primary">Gérer les employés</a>
+        <a href="{% url 'add_employee' %}" class="btn btn-success">Ajouter un employé</a>
+    </div>
+</div>
+{% endblock %}
